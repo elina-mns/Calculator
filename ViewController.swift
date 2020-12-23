@@ -43,6 +43,14 @@ class ViewController: UIViewController {
                 displayLabel.text = numberValue
                 isFinishedTypingNumber = false
             } else {
+                if numberValue == "." {
+                    guard let currentDisplayLabel = Double(displayLabel.text!) else {
+                        fatalError("Cannot convert display label to a Double")
+                    }
+                    //round down current display value
+                    let isInt = floor(currentDisplayLabel) == currentDisplayLabel
+                    if !isInt { return }
+                }
                 //because it is string it will add it next to the previous number
                 displayLabel.text = displayLabel.text! + numberValue
             }
