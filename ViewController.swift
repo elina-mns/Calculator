@@ -18,6 +18,9 @@ class ViewController: UIViewController {
             }
             return number
         }
+        set {
+            displayLabel.text = String(newValue)
+        }
     }
     
     @IBOutlet weak var displayLabel: UILabel!
@@ -26,13 +29,13 @@ class ViewController: UIViewController {
         isFinishedTypingNumber = true
         if let calcMethod = sender.currentTitle {
             if calcMethod == "+/-" {
-                displayLabel.text = String(displayValue * -1)
+                displayValue *= -1
             }
             if calcMethod == "AC" {
                 displayLabel.text = String(0)
             }
             if calcMethod == "%" {
-                displayLabel.text = String(displayValue / 100)
+                displayValue /= 100
             }
         }
         
