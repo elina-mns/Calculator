@@ -21,6 +21,17 @@ class ViewController: UIViewController {
         guard let number = Double(displayLabel.text!) else {
             fatalError("Cannot convert display label to a Double")
         }
+        if let calcMethod = sender.currentTitle {
+            if calcMethod == "+/-" {
+                displayLabel.text = String(number * -1)
+            }
+            if calcMethod == "AC" {
+                displayLabel.text = String(0)
+            }
+            if calcMethod == "%" {
+                displayLabel.text = String(number / 100)
+            }
+        }
         
     }
 
