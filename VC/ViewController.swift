@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     private var isFinishedTypingNumber: Bool = true
     private var displayValue: Double {
         get {
@@ -28,17 +28,13 @@ class ViewController: UIViewController {
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         isFinishedTypingNumber = true
         if let calcMethod = sender.currentTitle {
-            if calcMethod == "+/-" {
-                displayValue *= -1
+            let calculator = CalculatorLogic(number: displayValue)
+            //we have to unwrap Double
+            guard let result = calculator.calcFunctions(symbol: calcMethod) else {
+                fatalError("The result of the calculation is nil")
             }
-            if calcMethod == "AC" {
-                displayLabel.text = String(0)
-            }
-            if calcMethod == "%" {
-                displayValue /= 100
-            }
+            displayValue = result
         }
-        
     }
 
     
