@@ -32,10 +32,9 @@ class ViewController: UIViewController {
         calculator.setNumber(displayValue)
         if let calcMethod = sender.currentTitle {
             //we have to unwrap Double
-            guard let result = calculator.calcFunctions(symbol: calcMethod) else {
-                fatalError("The result of the calculation is nil")
+            if let result = calculator.calcFunctions(symbol: calcMethod) {
+              displayValue = result
             }
-            displayValue = result
         }
     }
 
