@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private var calculator = CalculatorLogic()
 
     private var isFinishedTypingNumber: Bool = true
     private var displayValue: Double {
@@ -27,8 +29,8 @@ class ViewController: UIViewController {
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         isFinishedTypingNumber = true
+        calculator.setNumber(displayValue)
         if let calcMethod = sender.currentTitle {
-            let calculator = CalculatorLogic(number: displayValue)
             //we have to unwrap Double
             guard let result = calculator.calcFunctions(symbol: calcMethod) else {
                 fatalError("The result of the calculation is nil")
